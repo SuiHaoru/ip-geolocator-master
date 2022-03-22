@@ -15,6 +15,16 @@
             <organizationUrl>http://www.inf.unideb.hu/</organizationUrl>
         </developer>
     </developers>
+
+    <!-- new added for shrek.unideb.hu -->
+    <distributionManagement>
+        <site>
+            <id>shrek</id>
+            <url>scp://saro@shrek.unideb.hu:2222/home/saro/public_html/${project.artifactId}</url>
+        </site>
+    </distributionManagement>
+    <!-- new added for shrek.unideb.hu -->
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
@@ -39,7 +49,7 @@
     <build>
         <plugins>
 
-            <!-- new added -->
+<!-- new added -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -63,7 +73,22 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.9.0</version>
             </plugin>
-            <!-- new added -->
+<!-- new added -->
+
+<!-- new added for shrek.unideb.hu -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.11.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                        <version>3.5.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+<!-- new added for shrek.unideb.hu -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -139,8 +164,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
 
     </reporting>
 </project>
